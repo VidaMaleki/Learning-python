@@ -24,7 +24,7 @@ for i in range(num_parties):
       else:
         print("That's not a valid input! Try again.")
     parties_dict[current_party][item_names[j]] = int(current_item_val)
-    if parties_dict[current_party]['tickets'] >= 4 and 1j == 0:
+    if parties_dict[current_party]['tickets'] >= 4 and j == 0:
       parties_dict[current_party]['bundle_tickets'] = parties_dict[current_party]['tickets'] // 4
       parties_dict[current_party]['tickets'] = parties_dict[current_party]['tickets'] % 4
       parties_dict[current_party]['bill'] += parties_dict[current_party]['bundle_tickets'] * item_vals[-1]
