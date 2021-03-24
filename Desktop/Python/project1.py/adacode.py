@@ -1,14 +1,4 @@
 
-def subscription_summary(months_subscribed, ad_free_months, video_on_demand_purchases):
-    """
-    Parameters:
-      months_subscribed: How many months each account purchased.
-      ad_free_months: How many months each account paid for ad free viewing.
-      video_on_demand_purchases: How many Videos on Demand each account purchased.
-    """
-    print("Welcome to the Ada+ Account Dashboard")
-    print()
-
 
 class Subscription:
 
