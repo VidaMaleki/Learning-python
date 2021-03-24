@@ -16,7 +16,7 @@ class Subscription:
         self.total_ad_frees = {}
         self.total_videos = {}
         self.total_months = {}
-
+        self.report_totals = {}
 
     def total_ad_free(self, number):
         ad_free_service = int(input("How many Ad free would you like to purchase? ")) 
@@ -31,30 +31,32 @@ class Subscription:
         self.total_months[number] = (month_service // 3 ) * 18 + (month_service % 3 ) * 7
  
     def report_total(self):
-        print(self.total_ad_frees[i] + self.total_months[i] + self.total_videos[i])
+        self.report_totals[i] = round(self.total_ad_frees[i] + self.total_months[i] + self.total_videos[i] , 2)
+        print("Total for all customers: ",round(self.total_ad_frees[i] + self.total_months[i] + self.total_videos[i] , 2))
 
     def report_total_Video_Adfree(self):
-        print(self.total_ad_frees[i] + self.total_videos[i])
+        print("Total 'Ad free' and 'Video On Demand' is: ", self.total_ad_frees[i] + self.total_videos[i])
 
-    def report_most_profitable(self, customer):
+    def report_most_profitable(self):
+        print("The most profitable customer was: " + "Customer " + str(max(self.report_totals, key=self.report_totals.get)))
         
-        print()
 
-ad = Subscription()
+ada = Subscription()
 
 
 for i in range(1, 4):
     print("Customer " + str(i) + ": " )
-    ad.total_ad_free(i)
-    ad.total_video(i)
-    ad.total_month(i)
+    ada.total_ad_free(i)
+    ada.total_video(i)
+    ada.total_month(i)
+    #print("Total is: ")
+    #ada.report_total(i)
 
-for i in range(1, 4):
-    print("Purchase summary: \n")
-    ad.report_total()
-    ad.report_total_video()
-    ad.report_total_ad_free()
 
+print("\n Purchase summary: \n")
+ada.report_total()
+ada.report_total_Video_Adfree()
+ada.report_most_profitable()
 
 
 
