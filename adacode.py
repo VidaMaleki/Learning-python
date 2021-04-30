@@ -6,9 +6,8 @@ class Subscription:
         self.total_ad_frees = {}
         self.total_videos = {}
         self.total_months = {}
-        self.report_customer_total = {}
-        self.report_total_ad_free = 0
-        self.report_totals = 0
+        self.report_total_ad_free = {}
+        self.report_totals = {}
 
     def total_ad_free(self, number):
         ad_free_service = int(input("How many Ad free would you like to purchase? ")) 
@@ -24,17 +23,15 @@ class Subscription:
  
     def report_total(self, customer):
         for i in range(1, customer + 1):
-            self.report_totals += round(self.total_ad_frees[i] + self.total_months[i] + self.total_videos[i], 2)
-            self.report_customer_total[i] = round(self.total_ad_frees[i] + self.total_months[i] + self.total_videos[i], 2)
-        return self.report_totals
+            self.report_totals[i] = round(self.total_ad_frees[i] + self.total_months[i] + self.total_videos[i], 2)
+        return sum(self.report_totals.values())
 
     def report_total_video_adfree(self, customer):
-        for i in range(1, customer + 1):
-            self.report_total_ad_free += round(self.total_ad_frees[i] + self.total_videos[i], 2)
-        return self.report_total_ad_free
+        self.report_total_ad_free[customer] = round(sum(list(self.total_ad_frees.values()) + list(self.total_videos.values()), 2))
+        return self.report_total_ad_free[customer]
 
     def report_most_profitable(self):
-        return max(self.report_customer_total, key=self.report_customer_total.get)
+        return max(self.report_totals, key=self.report_totals.get)
         
 
 ada = Subscription()
@@ -49,7 +46,7 @@ for i in range(1, num_customers + 1):
     ada.total_month(i)
     
 
-print("\n Purchase summary: \n")
+print("\n ***Purchase summary***\n")
 print("Total for all customers: " + str(ada.report_total(num_customers)))
 print("Total 'Ad free' and 'Video On Demand' is: " + str(ada.report_total_video_adfree(num_customers)))
 print("The most profitable customer was: " + "Customer " + str(ada.report_most_profitable()))
