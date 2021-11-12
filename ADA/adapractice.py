@@ -1,13 +1,11 @@
-
-
 class Subscription:
 
     def __init__(self):
         self.total_ad_frees = {}
         self.total_videos = {}
         self.total_months = {}
-        self.report_total_ad_free = {}
         self.report_totals = {}
+        self.report_total_ad_free = {}
 
     def total_ad_free(self, number):
         ad_free_service = int(input("How many Ad free would you like to purchase? ")) 
@@ -33,7 +31,6 @@ class Subscription:
     def report_most_profitable(self):
         return max(self.report_totals, key=self.report_totals.get)
         
-
 ada = Subscription()
 
 num_customers = 3
@@ -44,7 +41,6 @@ for i in range(1, num_customers + 1):
     ada.total_ad_free(i)
     ada.total_video(i)
     ada.total_month(i)
-    
 
 print("\n ***Purchase summary***\n")
 print("Total for all customers: " + str(ada.report_total(num_customers)))
