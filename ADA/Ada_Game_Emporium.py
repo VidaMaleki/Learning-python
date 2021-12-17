@@ -114,6 +114,6 @@ class Game:
 
 packs_purchased = [10, 5, 35] 
 dice_purchased = [2, 0, 3]    
-board_games_purchased = [3, 2, 0]  
+board_games_purchased = [1, 2,1]  
 
 sales_summary(packs_purchased, dice_purchased, board_games_purchased)
